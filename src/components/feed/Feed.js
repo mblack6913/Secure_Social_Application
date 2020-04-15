@@ -15,7 +15,7 @@ class Feed extends Component{
             <div className="feed container">
                 <div className="row">
                     <div className="col s10 offset-s1">
-                        <PostList posts={posts}/>
+                        <PostList groups={this.props.groups} posts={posts} email={this.props.email}/>
                     </div>
                 </div>
             </div>
@@ -27,6 +27,8 @@ const mapStateToProps = (state) => {
     console.log(state);
     return{
         posts: state.firestore.ordered.posts,
+        groups: state.firestore.ordered.groups,
+        email: state.firebase.auth.email,
         auth: state.firebase.auth
     }
 }

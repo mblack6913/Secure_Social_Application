@@ -20,3 +20,71 @@ export const createPost = (post) => {
         
     }
 }
+
+//This removes a member from a group 
+export const removeMember = (group) =>{
+    return (dispatch, getState, {getFirestore}) => {
+      //async call
+      const firestore = getFirestore();
+      console.log(group);
+      
+      firestore.collection('groups').doc(group.groupID).update({
+        members: firebase.firestore.FieldValue.arrayRemove(group.member)
+      }).then( () => {
+          dispatch({type: 'REMOVED_MEMBER' });
+      }).catch((err)=>{
+          dispatch({type: 'REMOVED_MEMBER_ERROR', err });
+      })
+      
+  }
+  };
+  //This rejects a request to join a group
+  export const rejectRequest = (group) =>{
+    return (dispatch, getState, {getFirestore}) => {
+      //async call
+      const firestore = getFirestore();
+      console.log(group);
+      
+      firestore.collection('groups').doc(group.groupID).update({
+        requests: firebase.firestore.FieldValue.arrayRemove(group.member)
+      }).then( () => {
+          dispatch({type: 'REMOVED_MEMBER' });
+      }).catch((err)=>{
+          dispatch({type: 'REMOVED_MEMBER_ERROR', err });
+      }) 
+  }
+  };
+  // This requests a user to be a part of their group
+  export const addMemberRequest = (group) =>{
+    return (dispatch, getState, {getFirestore}) => {
+      //async call
+      const firestore = getFirestore();
+      console.log(group);
+      
+      firestore.collection('groups').doc(group.groupID).update({
+        requests: firebase.firestore.FieldValue.arrayUnion(group.member)
+      }).then( () => {
+          dispatch({type: 'REMOVED_MEMBER' });
+      }).catch((err)=>{
+          dispatch({type: 'REMOVED_MEMBER_ERROR', err });
+      })
+      
+  }
+  };
+//This accepts request and adds them to the group
+  export const acceptRequest = (group) =>{
+    return (dispatch, getState, {getFirestore}) => {
+      //async call
+      const firestore = getFirestore();
+      console.log(group);
+      
+      firestore.collection('groups').doc(group.groupID).update({
+        members: firebase.firestore.FieldValue.arrayUnion(group.member)
+      }).then( () => {
+          dispatch({type: 'REMOVED_MEMBER' });
+      }).catch((err)=>{
+          dispatch({type: 'REMOVED_MEMBER_ERROR', err });
+      })
+      
+  }
+  };

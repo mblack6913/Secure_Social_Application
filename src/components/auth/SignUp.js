@@ -3,7 +3,7 @@ import logo from './secureLogo.png'
 import './authStyle.css'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { signUp } from '../../store/actions/authActions'
+import { signUp, signUpGroup } from '../../store/actions/authActions'
 import {firebaseConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 
@@ -13,7 +13,7 @@ class SignUp extends Component {
         password: '',
         firstName: '',
         lastName: '',
-        groupName:''
+        groupName:'',
     }
     handleChange = (e) => {
         this.setState({
@@ -23,8 +23,8 @@ class SignUp extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.signUp(this.state)
-        //this.props.signUpGroup(this.state)
-        this.props.history.push('/');
+        this.props.signUpGroup(this.state)
+        this.props.history.push('/')
     }
     render() {
         const {auth, authError } = this.props;
@@ -81,7 +81,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-        signUp: (newUser, firebase) => dispatch(signUp(newUser, firebase))
+        signUp: (newUser, firebase) => dispatch(signUp(newUser, firebase)),
+        signUpGroup: (newUser,firebase) => dispatch(signUpGroup(newUser,firebase))
 });
 
 export default compose(

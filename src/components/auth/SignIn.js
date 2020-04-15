@@ -24,8 +24,8 @@ class SignIn extends Component {
         const {authError, auth } = this.props;
         if(auth.uid) return <Redirect to="/"/>
         return (
-            <div className="row container">
-                <div className="col s6 pic" >
+            <div className="row body container">
+                <div className="col s6 pic offset-3" >
                     <img src={logo} alt="logo" height="250" width="230"/>
                 </div>
                 <div className="col s6 ">
