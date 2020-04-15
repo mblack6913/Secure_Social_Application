@@ -1,11 +1,5 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: lightgray;
+  background-color: lightgrey;
 }
 
 code {
@@ -17,5 +11,14 @@ form {
   padding: 20px;
   margin-top: 60px;
   box-shadow: 5px 5px 5px grey;
+}
+
+.groups {
+  margin-top: 70px;
+  box-shadow: 2px 2px 2px grey;
+}
+
+.requests {
+  height: 400px;
 }
 
